@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.js';
+import "./bootstrap.min.css"
+import Books from "./books"
+import Header from './header/header.js';
+import Card from './card/card.js';
+import Filter from './filter/filter.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <Header />
+
+      <section>
+        <div className="collapse" id="collapseExample">
+          <Filter />
+        </div>
+
+        <div className="container-xl">
+          <div className="books__list row">
+            {Books.map(book => <Card {...book} />)}
+
+            <p className="text-center text-secondary">Please wait...</p>
+          </div>
+        </div>
+     </section>
+
+      <Card />
+    </>
+  )
 }
 
 export default App;
